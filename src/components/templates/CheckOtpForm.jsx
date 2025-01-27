@@ -1,6 +1,6 @@
 
 
-export default CheckOtpForm() {
+export default function CheckOtpForm() {
 
     return (
 
