@@ -1,11 +1,25 @@
+import { checkOtp } from "../../services/auth";
 
 
 export default function CheckOtpForm({ code, setCode, setStep, mobile }) {
 
-    const submitHandler = event => {
+    const submitHandler = async (e) => {
 
-        event.preventDefault();
-        console.log({ code, mobile });
+        e.preventDefault();
+        if ( code.length !== 5 ) return;
+
+        const { res, err } = await checkOtp( mobile, code )
+        if ( res ) {
+
+            console.log(res);
+
+        }
+
+        if ( err ) {
+
+            console.log(err.response.data.message);
+
+        }
 
     }
 
