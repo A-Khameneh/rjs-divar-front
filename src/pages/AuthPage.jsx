@@ -6,7 +6,7 @@ import SendOtpForm from "../components/templates/SendOtpForm";
 
 export default function AuthPage() {
 
-    const [ step, setStep ] = useState(2);
+    const [ step, setStep ] = useState(1);
     const [ mobile, setMobile ] = useState("");
     const [ code, setCode ] = useState("");
 
@@ -14,8 +14,8 @@ export default function AuthPage() {
 
         <div>
 
-            { step === 1 && <SendOtpForm /> }
-            { step === 2 && <CheckOtpForm /> }
+            { step === 1 && <SendOtpForm setStep={ setStep } mobile = { mobile } setMobile = { setMobile } /> }
+            { step === 2 && <CheckOtpForm code={ code } setCode={ setCode } mobile={ mobile } setStep={ setStep } /> }
 
         </div>
 
