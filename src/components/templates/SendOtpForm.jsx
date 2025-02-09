@@ -1,4 +1,4 @@
-import { sendOtp } from "../../services/auth";
+import { sendOtp } from "services/auth";
 
 
 export default function SendOtpForm({ mobile, setMobile, setStep }) {
