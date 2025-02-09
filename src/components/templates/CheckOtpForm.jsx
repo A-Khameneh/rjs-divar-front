@@ -1,4 +1,5 @@
-import { checkOtp } from "../../services/auth";
+import { checkOtp } from "services/auth";
+import { setCookie } from "utils/cookie";
 
 
 export default function CheckOtpForm({ code, setCode, setStep, mobile }) {
@@ -11,7 +12,8 @@ export default function CheckOtpForm({ code, setCode, setStep, mobile }) {
         const { res, err } = await checkOtp( mobile, code )
         if ( res ) {
 
-            console.log(res);
+            console.log(res.data);
+            setCookie( res.data );
 
         }
 
