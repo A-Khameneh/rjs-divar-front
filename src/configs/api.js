@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getCookie } from "src/utils/cookie";
 
 const api = axios.create({
 
@@ -10,5 +11,22 @@ const api = axios.create({
     }
 
 })
+
+axios.interceptors.request.use( (req) => {
+
+    const accessToken = getCookie("accessToken");
+    if ( accessToken ) {
+
+        req.headers["Authorization"] = `bearer ${accessToken}`
+
+    }
+
+    return req;
+
+}, err => {
+
+    return Promise.reject(err);
+
+} )
 
 export default api;
