@@ -12,7 +12,7 @@ export default function Router() {
 
     const { data, isLoading, error } = useQuery( ["profile"], getProfile );
 
-    if ( isLoading ) return <h1> در حال بارگذاری... </h1>;
+    //if ( isLoading ) return <h1> در حال بارگذاری... </h1>;
 
     return <Routes>
 
