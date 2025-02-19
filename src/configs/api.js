@@ -13,7 +13,7 @@ const api = axios.create({
 
 })
 
-axios.interceptors.request.use( (req) => {
+api.interceptors.request.use( (req) => {
 
     const accessToken = getCookie("accessToken");
 
@@ -23,7 +23,7 @@ axios.interceptors.request.use( (req) => {
 
     }
 
-        return req;
+    return req;
 
     }, err => {
 
@@ -47,9 +47,9 @@ api.interceptors.response.use( res => {
 
             const res = await getNewTokens();
 
-            if ( !res?.response ) return;
+            if ( !res?.data ) return;
 
-            setCookie( res.response.data );
+            setCookie( res.data );
             
             return api( originalReq )
 
