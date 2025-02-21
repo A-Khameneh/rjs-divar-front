@@ -1,5 +1,6 @@
 import { sendOtp } from "services/auth";
 
+import styles from "./SendOtpForm.module.css";
 
 export default function SendOtpForm({ mobile, setMobile, setStep }) {
 
@@ -18,7 +19,7 @@ export default function SendOtpForm({ mobile, setMobile, setStep }) {
 
     return (
 
-        <form onSubmit={ submitHandler } >
+        <form onSubmit={ submitHandler } className={ styles.form } >
 
             <p> ورود به حساب کاربری </p>
 
