@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import defaultOptions from "./configs/reactQueryConfigs";
+import Layout from "layouts/Layout";
 
 function App() {
 
@@ -14,8 +15,12 @@ function App() {
     <QueryClientProvider client={ queryClient } >
 
       <BrowserRouter>
-    
-        <Router />
+
+        <Layout>
+
+          <Router />
+
+        </Layout>
     
       </BrowserRouter>
 
