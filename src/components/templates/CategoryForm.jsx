@@ -1,5 +1,8 @@
 import { useState } from "react"
+import { useMutation } from "@tanstack/react-query";
 
+import styles from "./CategoryForm.module.css";
+import { addCategory } from "services/admin";
 
 export default function CategoryForm() {
 
@@ -11,6 +14,9 @@ export default function CategoryForm() {
 
     })
 
+    const { mutate, isLoading, error, data } = useMutation( addCategory )
+    console.log({isLoading, error, data});
+
     const changeHandler = event => {
 
         setForm({ ...form, [event.target.name]: event.target.value })
@@ -20,13 +26,19 @@ export default function CategoryForm() {
     const submitHandler = event => {
 
         event.preventDefault();
-        console.log(form);
+
+        if ( !form.name || !form.slug || !form.icon ) return;
+
+        mutate( form );
 
     }
 
-    return <form onChange={ changeHandler } onSubmit={ submitHandler } >
+    return <form onChange={ changeHandler } onSubmit={ submitHandler } className={ styles.form } >
 
         <h3> دسته بندی جدید </h3>
+
+        { data?.status === 201 && <p> دسته بندی با موفقیت اضافه شد </p> }
+        { !!error && <p> مشکلی پیش آمده است </p> }
 
         <label htmlFor="name"> اسم دسته بندی </label>
         <input type="text" name="name" id="name" />
@@ -37,7 +49,7 @@ export default function CategoryForm() {
         <label htmlFor="icon"> آیکون </label>
         <input type="text" name="icon" id="icon" />
 
-        <button type="submit" > ایجاد </button>
+        <button type="submit" disabled={ isLoading } > ایجاد </button>
 
     </form>
 
