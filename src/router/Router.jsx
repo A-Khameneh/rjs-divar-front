@@ -13,8 +13,6 @@ export default function Router() {
 
     const { data, isLoading, error } = useQuery( ["profile"], getProfile );
 
-    console.log({ data, isLoading, error });
-
     if ( isLoading ) return <Loader />;
 
     return <Routes>
