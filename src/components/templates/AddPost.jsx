@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { getCategory } from "services/admin";
 
@@ -21,6 +21,19 @@ export default function AddPost() {
     });
 
     const { data } = useQuery( ["get-categories"], getCategory );
+
+    useEffect ( () => {
+
+        if (data && data.data && data.data.length > 0) {
+
+            setForm(prevForm => ({
+                ...prevForm,
+                category: data.data[0]._id
+            }));
+
+        }
+        
+    }, [data]);
     
     const changeHandler = event => {
 
@@ -49,6 +62,8 @@ export default function AddPost() {
         }
         
         const token = getCookie( "accessToken" )
+
+        console.log(formData);
 
         axios.post( `${ import.meta.env.VITE_BASE_URL }post/create`, formData, {
 
