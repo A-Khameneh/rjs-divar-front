@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-import { getCategory } from "src/services/admin";
+import { getCategory } from "services/admin";
 
+import styles from "./AddPost.module.css";
 
 export default function AddPost() {
 
@@ -42,7 +43,7 @@ export default function AddPost() {
 
     }
 
-    return <form onChange={ changeHandler } >
+    return <form onChange={ changeHandler } className={ styles.form } >
 
         <h3> افزودن آگهی </h3>
 
