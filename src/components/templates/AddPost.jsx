@@ -4,6 +4,8 @@ import { useState } from "react";
 import { getCategory } from "services/admin";
 
 import styles from "./AddPost.module.css";
+import { getCookie } from "utils/cookie";
+import axios from "axios";
 
 export default function AddPost() {
 
@@ -37,9 +39,27 @@ export default function AddPost() {
     }
 
     const addHandler = event => {
-
+        
         event.preventDefault();
-        console.log(form);
+        const formData = new FormData();
+        for ( let i in form ) {
+
+            formData.append( i, form[i] );
+
+        }
+        
+        const token = getCookie( "accessToken" )
+
+        axios.post( `${ import.meta.env.VITE_BASE_URL }post/create`, formData, {
+
+            headers: {
+
+                "Content-Type": "multipart/form-data",
+                Authorization: `bearer ${ token }`
+
+            }
+
+        }).then( res => console.log(res) ).catch( err => console.log(err) )
 
     }
 
@@ -54,7 +74,7 @@ export default function AddPost() {
         <textarea name="content" id="content" />
 
         <label htmlFor="amount"> قیمت </label>
-        <input type="text" name="amount" id="amount" />
+        <input type="number" name="amount" id="amount" />
 
         <label htmlFor="city"> شهر </label>
         <input type="text" name="city" id="city" />
@@ -62,7 +82,7 @@ export default function AddPost() {
         <label htmlFor="category"> دسته بندی </label>
         <select name="category" id="category" >
 
-            { data?.data.map( i => <option key={ i._id } value={ i._id } > { i.name } </option> ) }
+        { data?.data.map( i => <option key={ i._id } value={ i._id } > { i.name } </option> ) }
 
         </select>
 
