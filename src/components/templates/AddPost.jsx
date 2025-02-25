@@ -6,6 +6,7 @@ import { getCategory } from "services/admin";
 import styles from "./AddPost.module.css";
 import { getCookie } from "utils/cookie";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function AddPost() {
 
@@ -74,7 +75,7 @@ export default function AddPost() {
 
             }
 
-        }).then( res => console.log(res) ).catch( err => console.log(err) )
+        }).then( res => toast.success( res.data.message ) ).catch( () => toast.error("مشکلی پیش آمده است") );
 
     }
 
