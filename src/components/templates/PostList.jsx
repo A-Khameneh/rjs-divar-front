@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
 import { getPosts } from "services/user"
 import Loader from "../modules/Loader";
+import { sp } from "utils/numbers";
 
 
 export default function PostList() {
 
     const { data, isLoading } = useQuery( ["my-post-list"], getPosts )
+    const baseURL = import.meta.env.VITE_BASE_URL;
 
     console.log(data);
 
@@ -24,7 +26,7 @@ export default function PostList() {
 
                             <div key={ post._id } >
 
-                                <img src={ `${ import.meta.env.VITE_BASE_URL }${ post.images[0] }` } />
+                                <img src={ `${ baseURL }${ post.images[0] }` } />
 
                                 <div>
 
@@ -35,8 +37,8 @@ export default function PostList() {
 
                                 <div>
 
-                                    <p> { post?.createdAt } </p>
-                                    <span> { post?.amount } تومان </span>
+                                    <p> { new Date( post?.createdAt ).toLocaleDateString("fa-IR") } </p>
+                                    <span> { sp( post?.amount ) } تومان </span>
 
                                 </div>
 
