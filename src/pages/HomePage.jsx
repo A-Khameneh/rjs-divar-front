@@ -1,15 +1,14 @@
+import Main from "components/templates/Main";
+import SideBar from "components/templates/SideBar";
 
 
 export default function HomePage() {
 
-    return (
+    return <div style={{ display: "flex" }} >
 
-        <div>
+        <SideBar />
+        <Main />
 
-            Home Page
-
-        </div>
-
-    )
+    </div>
 
 }
