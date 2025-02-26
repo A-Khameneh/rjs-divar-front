@@ -1,13 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCategory } from "src/services/admin";
 
+import { getCategory } from "services/admin";
+
+import styles from "./Sidebar.module.css";
 
 export default function SideBar() {
 
     const { data } = useQuery( ["get-categories"], getCategory );
     console.log(data);
 
-    return <div>
+    return <div className={ styles.sidebar } >
 
         <h4> دسته ها </h4>
 

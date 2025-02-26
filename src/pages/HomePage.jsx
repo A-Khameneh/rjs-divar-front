@@ -1,12 +1,12 @@
 import Main from "components/templates/Main";
-import SideBar from "components/templates/SideBar";
+import Sidebar from "components/templates/Sidebar";
 
 
 export default function HomePage() {
 
     return <div style={{ display: "flex" }} >
 
-        <SideBar />
+        <Sidebar />
         <Main />
 
     </div>
