@@ -1,13 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getCategory } from "services/admin";
-
 import styles from "./Sidebar.module.css";
 
-export default function SideBar() {
-
-    const { data } = useQuery( ["get-categories"], getCategory );
-    console.log(data);
+export default function SideBar({ categories }) {
 
     return <div className={ styles.sidebar } >
 
@@ -15,7 +8,7 @@ export default function SideBar() {
 
         <ul>
 
-            { data?.data?.map( category => (
+            { categories?.data?.map( category => (
 
                 <li key={ category._id } >
 
