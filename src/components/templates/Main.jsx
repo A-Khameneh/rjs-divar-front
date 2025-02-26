@@ -1,19 +1,20 @@
-import { sp } from "src/utils/numbers";
+import { sp } from "utils/numbers";
 
+import styles from "./Main.module.css";
 
 export default function Main({ posts }) {
 
     const baseURL = import.meta.env.VITE_BASE_URL;
 
-    return <div>
+    return <div className={ styles.container } >
 
         {
 
             posts?.data?.posts?.map( post => (
 
-                <div key={ post._id } >
+                <div key={ post._id } className={ styles.card } >
 
-                    <div>
+                    <div className={ styles.info } >
 
                         <p> { post?.options?.title } </p>
                         <div>
