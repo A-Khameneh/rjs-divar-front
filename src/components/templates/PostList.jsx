@@ -3,6 +3,7 @@ import { getPosts } from "services/user"
 import Loader from "../modules/Loader";
 import { sp } from "utils/numbers";
 
+import styles from "./PostList.module.css";
 
 export default function PostList() {
 
@@ -11,7 +12,7 @@ export default function PostList() {
 
     console.log(data);
 
-    return <div>
+    return <div className={ styles.list } >
 
         { 
             isLoading ? <Loader /> : (
@@ -24,7 +25,7 @@ export default function PostList() {
 
                         data.data.posts.map( post => (
 
-                            <div key={ post._id } >
+                            <div key={ post._id } className={ styles.post } >
 
                                 <img src={ `${ baseURL }${ post.images[0] }` } />
 
@@ -35,7 +36,7 @@ export default function PostList() {
 
                                 </div>
 
-                                <div>
+                                <div className={ styles.price } >
 
                                     <p> { new Date( post?.createdAt ).toLocaleDateString("fa-IR") } </p>
                                     <span> { sp( post?.amount ) } تومان </span>
