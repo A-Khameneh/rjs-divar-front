@@ -4,14 +4,15 @@ import { getCookie, setCookie } from "utils/cookie";
 
 const api = axios.create({
 
+    
+    credentials: 'include',
     baseURL: import.meta.env.VITE_BASE_URL,
     headers: {
-
+        
         "Content-Type": "application/json",
-        credentials: 'include',
-
+        
     }
-
+    
 })
 
 api.interceptors.request.use( (req) => {
