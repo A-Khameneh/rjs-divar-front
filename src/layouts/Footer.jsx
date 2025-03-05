@@ -1,10 +1,9 @@
-import styles from "./Footer.module.css";
 
 export default function Footer() {
 
-    return <footer className={ styles.footer } >
+    return <footer className="text-center ltr mt-28 pt-2" >
 
-        <div className={ styles.separator }></div>
+        <div className="w-1/2 h-[2px] bg-gray-300 mx-auto mb-2" ></div>
 
         <p> Developed by Davoud </p>
 

@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: "Vazir", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 300;
   line-height: 1.5;
@@ -26,4 +26,18 @@ button,
 input,
 select {
   font-family: inherit;
+} */
+
+@import "tailwindcss";
+
+@theme {
+  
+  --font-display: "Vazir", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --color-primary: #A62626;
 }
+
+/* @layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+} */

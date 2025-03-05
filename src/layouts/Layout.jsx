@@ -1,8 +1,6 @@
 import Header from "layouts/Header";
 import Footer from "layouts/Footer";
 
-import styles from "./Layout.module.css";
-
 export default function Layout({ children }) {
 
     return (
@@ -11,7 +9,7 @@ export default function Layout({ children }) {
 
             <Header />
 
-                <div className={ styles.main } >
+                <div className="min-h-screen" >
 
                     {children}
 

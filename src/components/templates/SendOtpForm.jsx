@@ -1,7 +1,5 @@
 import { sendOtp } from "services/auth";
 
-import styles from "./SendOtpForm.module.css";
-
 export default function SendOtpForm({ mobile, setMobile, setStep }) {
 
     const submitHandler = async event => {
@@ -14,21 +12,21 @@ export default function SendOtpForm({ mobile, setMobile, setStep }) {
         if ( res ) setStep(2);
 
         if ( err ) console.log( err.response.data.message );
- 
+
     }
 
     return (
 
-        <form onSubmit={ submitHandler } className={ styles.form } >
+        <form onSubmit={ submitHandler } className="max-w-md mx-auto flex flex-col mt-[100px] border border-gray-300 rounded-md p-7.5" > 
 
-            <p> ورود به حساب کاربری </p>
+            <p className="text-xl font-normal mb-5" > ورود به حساب کاربری </p> 
 
-            <span> برای استفاده از امکانات دیوار ، لطفا شماره موبایل خود را وارد کنید. کد تایید به این شماره پیامک می شود. </span>
+            <span className="text-gray-500 text-sm mb-5" > برای استفاده از امکانات دیوار ، لطفا شماره موبایل خود را وارد کنید. کد تایید به این شماره پیامک می شود. </span> 
 
-            <label htmlFor="input" > شماره موبایل خود را وارد کنید. </label>
-            <input type="text" id="input" placeholder="شماره موبایل" value={ mobile } onChange={ e => setMobile( e.target.value ) } />
-            
-            <button type="submit" > ارسال کد تایید </button>
+            <label htmlFor="input" className="block text-sm mb-2.5" > شماره موبایل خود را وارد کنید. </label> 
+            <input type="text" id="input" placeholder="شماره موبایل" value={ mobile } onChange={ e => setMobile( e.target.value ) } className="block mx-0 my-2.5 p-1.5 border border-solid border-gray-300 rounded-md outline-none" /> 
+
+            <button type="submit" className="w-[110px] px-2.5 py-1.5 border-none bg-primary text-white rounded-md cursor-pointer" > ارسال کد تایید </button> 
 
         </form>
 

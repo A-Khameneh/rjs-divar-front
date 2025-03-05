@@ -1,23 +1,23 @@
 import { sp } from "utils/numbers";
 
-import styles from "./Main.module.css";
+// import styles from "./Main.module.css";  <- حذف ایمپورت CSS Modules
 
 export default function Main({ posts }) {
 
     const baseURL = import.meta.env.VITE_BASE_URL;
 
-    return <div className={ styles.container } >
+    return <div className="mt-5 flex flex-wrap justify-start gap-5 w-[calc(100%-200px)] items-start" > 
 
         {
 
             posts?.data?.posts?.map( post => (
 
-                <div key={ post._id } className={ styles.card } >
+                <div key={ post._id } className="w-[330px] flex justify-between border border-gray-300 my-2 mx-0 p-4 rounded-md" > 
 
-                    <div className={ styles.info } >
+                    <div className="flex flex-col justify-between" > 
 
-                        <p> { post?.options?.title } </p>
-                        <div>
+                        <p className="text-base"> { post?.options?.title } </p>
+                        <div className="text-gray-500 text-sm" > 
 
                             <p> { sp( post?.amount ) } تومان </p>
                             <span> { post?.options?.city } </span>
@@ -26,7 +26,7 @@ export default function Main({ posts }) {
 
                     </div>
 
-                    <img src={ `${ baseURL }${ post.images[0] }` } />
+                    <img src={ `${ baseURL }${ post.images[0] }` } className="w-[150px] h-[130px] rounded-md ml-0.5" /> 
 
                 </div>
 
