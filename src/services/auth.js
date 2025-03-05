@@ -4,7 +4,7 @@ const sendOtp = async ( mobile ) => {
 
     try {
 
-        const res = await api.post( "auth/sendOtp", { mobile } )
+        const res = await api.post( "auth/send-otp", { mobile } )
         return { res };
         
     } catch (err) {
@@ -19,7 +19,7 @@ const checkOtp = async ( mobile, code ) => {
 
     try {
 
-        const res = await api.post( "auth/checkOtp", { mobile, code } )
+        const res = await api.post( "auth/check-otp", { mobile, code } )
         return { res }
         
     } catch (err) {
