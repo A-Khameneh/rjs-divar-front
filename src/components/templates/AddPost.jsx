@@ -47,7 +47,8 @@ export default function AddPost() {
         axios.post( `${ import.meta.env.VITE_BASE_URL }post/create`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
-                Authorization: `bearer ${ token }`
+                Authorization: `bearer ${ token }`,
+                credentials: 'include',
             }
         }).then( res => toast.success( res.data.message ) ).catch( () => toast.error("مشکلی پیش آمده است") );
     }
