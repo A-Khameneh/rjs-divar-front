@@ -9,8 +9,6 @@ export default function PostList() {
     console.log(data);
     const baseURL = import.meta.env.VITE_BASE_URL;
 
-    console.log(data);
-
     return <div className="mx-auto pt-[60px] pb-[30px]" > 
 
         <h3 className="mb-[30px] border-b-4 border-primary w-fit pb-1.5" > آگهی های شما </h3>
