@@ -20,7 +20,7 @@ export default function PostList() {
 
                 <>
                     {
-                        data.data.posts.map( post => (
+                        data.map( post => (
 
                             <div key={ post._id } className="flex items-center border-2 border-gray-300 rounded-md my-2.5 mx-0 p-1.5" > 
 
