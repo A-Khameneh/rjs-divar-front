@@ -6,6 +6,7 @@ import { sp } from "utils/numbers";
 export default function PostList() {
 
     const { data, isLoading } = useQuery( ["my-post-list"], getPosts )
+    console.log(data);
     const baseURL = import.meta.env.VITE_BASE_URL;
 
     console.log(data);
